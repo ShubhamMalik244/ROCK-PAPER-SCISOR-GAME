@@ -1,0 +1,59 @@
+@use "../Tools/all" as *;
+
+.overlayPage {
+  min-height: 100dvh;
+  @include center;
+  background-color: rgba($color: #000000, $alpha: 0.5);
+
+  .box {
+    aspect-ratio: 4/4.7;
+    padding: 2rem 2rem;
+    background-color: #fff;
+    border-radius: 0.5rem;
+
+    nav {
+      margin-bottom: 1rem;
+      @include flexing(row, space-between, center);
+
+      h1 {
+        @include fonting(2rem, "Barlow-Bold");
+        color: $DarkText;
+      }
+
+      button {
+        border: none;
+        background: url("/public/images/icon-close.svg") center/cover no-repeat;
+        width: 1.2rem;
+        height: 1.2rem;
+      }
+    }
+  }
+}
+
+//MEDIA-QUERY
+@media (width <= 425px) {
+    .overlayPage{
+        display: block;
+        
+        .box{
+          padding-top: 6rem;
+          padding-bottom: 4rem;
+          min-height: 100vh;
+          border-radius: unset;
+          aspect-ratio: unset;
+          @include center;
+
+          nav{
+            flex-direction: column;
+            min-height: calc(100vh - 10rem);
+            margin-bottom: 0;
+          }
+
+          img{
+            width: calc(100% - 4rem);
+            position: absolute;
+            top: 30%;
+          }
+        }
+    }
+}

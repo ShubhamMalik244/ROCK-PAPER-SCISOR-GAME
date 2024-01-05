@@ -1,0 +1,28 @@
+//TO ALIGN SING COMPONENT
+@mixin center {
+    display: grid;
+    place-items: center;
+}
+
+//To ALIGN TWO COMPONENTS
+@mixin flexing($direction, $justify, $align){
+    display: flex;
+    flex-direction: $direction;
+    justify-content: $justify;
+    align-items: $align;
+}
+
+//FONTS
+@font-face {
+    font-family: 'Barlow-Bold';
+    src: url('/public/fonts/BarlowSemiCondensed-Bold.ttf');
+}
+
+@font-face {
+    font-family: 'Barlow-ExBold';
+    src: url('/public/fonts/BarlowSemiCondensed-ExtraBold.ttf');
+}
+
+@mixin fonting($size, $family) {
+    font: $size $family;
+}

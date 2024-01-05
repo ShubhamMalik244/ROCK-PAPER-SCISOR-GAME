@@ -2,5 +2,71 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  color: red;
+}
+
+.appContainer {
+  min-width: 375px;
+}
+
+@font-face {
+  font-family: "Barlow-Bold";
+  src: url("/public/fonts/BarlowSemiCondensed-Bold.ttf");
+}
+@font-face {
+  font-family: "Barlow-ExBold";
+  src: url("/public/fonts/BarlowSemiCondensed-ExtraBold.ttf");
+}
+.overlayPage {
+  min-height: 100dvh;
+  display: grid;
+  place-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.overlayPage .box {
+  aspect-ratio: 4/4.7;
+  padding: 2rem 2rem;
+  background-color: #fff;
+  border-radius: 0.5rem;
+}
+.overlayPage .box nav {
+  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.overlayPage .box nav h1 {
+  font: 2rem "Barlow-Bold";
+  color: hsl(229, 25%, 31%);
+}
+.overlayPage .box nav button {
+  border: none;
+  background: url("/public/images/icon-close.svg") center/cover no-repeat;
+  width: 1.2rem;
+  height: 1.2rem;
+}
+
+@media (width <= 425px) {
+  .overlayPage {
+    display: block;
+  }
+  .overlayPage .box {
+    padding-top: 6rem;
+    padding-bottom: 4rem;
+    min-height: 100vh;
+    border-radius: unset;
+    aspect-ratio: unset;
+    display: grid;
+    place-items: center;
+  }
+  .overlayPage .box nav {
+    flex-direction: column;
+    min-height: calc(100vh - 10rem);
+    margin-bottom: 0;
+  }
+  .overlayPage .box img {
+    width: calc(100% - 4rem);
+    position: absolute;
+    top: 30%;
+  }
 }
