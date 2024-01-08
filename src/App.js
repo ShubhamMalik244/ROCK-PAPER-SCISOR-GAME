@@ -1,3 +1,5 @@
+import PlayBtn from './Components/PlayBtn';
+
 export default function App() {
 
 
@@ -18,7 +20,7 @@ export default function App() {
           </div>
          </section>
 
-         <section className="gamePage">
+         <section className="gamePage ">
 
                <div className="leadBoard">
                 <img src="images/logo-bonus.svg" alt="logo"></img>
@@ -29,7 +31,11 @@ export default function App() {
                </div>
 
                <div className="gameBtnContainer">
-
+                 <PlayBtn btnType='rock'/>
+                 <PlayBtn btnType='paper'/>
+                 <PlayBtn btnType='scissors'/>
+                 <PlayBtn btnType='lizard'/>
+                 <PlayBtn btnType='spock'/>
                </div>
          </section>
     </main>

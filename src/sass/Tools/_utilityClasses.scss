@@ -1,3 +1,51 @@
-.hide{
-    display: none;
+@use '../Tools/all' as *;
+
+.hide {
+  display: none;
+}
+
+//SPECIFIC BTN CLASSES
+.rock {
+    background: url(/public/images/icon-rock.svg) center/40% no-repeat,
+    radial-gradient(circle at left 50% bottom 47%, #fff 66%, #d6d6d6 35%) content-box,
+    radial-gradient(circle at left 50% top 46%, $RockFrom 67%, $RockTo 35%) border-box;
+    position: absolute;
+    bottom: -15%;
+    right: 0%;
+}
+
+.paper {
+    background: url(/public/images/icon-paper.svg) center/40% no-repeat,
+    radial-gradient(circle at left 50% bottom 47%, #fff 66%, #d6d6d6 35%) content-box,
+    radial-gradient(circle at left 50% top 46%, $PaperFrom 67%, $PaperTo 35%) border-box;
+    position: absolute;
+    top: 20%;
+    right: -15%;
+}
+
+.scissors {
+    background: url(/public/images/icon-scissors.svg) center/40% no-repeat,
+    radial-gradient(circle at left 50% bottom 47%, #fff 66%, #d6d6d6 35%) content-box,
+    radial-gradient(circle at left 50% top 46%, $ScissorsFrom 67%, $ScissorsTo 35%) border-box;
+    position: absolute;
+    top: -15%;
+    left: 30%;
+}
+
+.lizard {
+  background: url(/public/images/icon-lizard.svg) center/40% no-repeat,
+    radial-gradient(circle at left 50% bottom 47%, #fff 66%, #d6d6d6 35%) content-box,
+    radial-gradient(circle at left 50% top 46%, $LizardFrom 67%, $LizardTo 35%) border-box;
+    position: absolute;
+    bottom: -15%;
+    left: 0;
+}
+
+.spock {
+    background: url(/public/images/icon-spock.svg) center/40% no-repeat,
+    radial-gradient(circle at left 50% bottom 47%, #fff 66%, #d6d6d6 35%) content-box,
+    radial-gradient(circle at left 50% top 46%, $SpockFrom 67%, $SpockTo 35%) border-box;
+    position: absolute;
+    left: -15%;
+    top: 20%;
 }

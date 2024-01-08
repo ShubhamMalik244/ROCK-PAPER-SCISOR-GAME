@@ -22,6 +22,7 @@
   display: grid;
   place-items: center;
   background-color: rgba(0, 0, 0, 0.3);
+  z-index: 10;
 }
 .overlayPage .box {
   aspect-ratio: 4/4.7;
@@ -76,8 +77,9 @@
   background-image: radial-gradient(circle at top, hsl(214, 70%, 30%) 40%, hsl(237, 49%, 15%));
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
+  gap: 8rem;
   padding: 4rem 1rem;
 }
 .gamePage .leadBoard {
@@ -116,10 +118,53 @@
   transform: scaleY(1.2);
 }
 .gamePage .gameBtnContainer {
-  border: 2px solid blue;
-  height: 3rem;
+  width: clamp(15rem, 45vw, 25rem);
+  aspect-ratio: 1/1;
+  background: url(/public/images/bg-pentagon.svg) center/contain no-repeat;
+  position: relative;
+}
+.gamePage .gameBtnContainer .playBtn {
+  border: clamp(0.8rem, 2vw, 1rem) solid transparent;
+  border-radius: 50%;
+  width: 40%;
+  aspect-ratio: 1/1;
 }
 
 .hide {
   display: none;
+}
+
+.rock {
+  background: url(/public/images/icon-rock.svg) center/40% no-repeat, radial-gradient(circle at left 50% bottom 47%, #fff 66%, #d6d6d6 35%) content-box, radial-gradient(circle at left 50% top 46%, hsl(349, 70%, 56%) 67%, hsl(349, 71%, 48%) 35%) border-box;
+  position: absolute;
+  bottom: -15%;
+  right: 0%;
+}
+
+.paper {
+  background: url(/public/images/icon-paper.svg) center/40% no-repeat, radial-gradient(circle at left 50% bottom 47%, #fff 66%, #d6d6d6 35%) content-box, radial-gradient(circle at left 50% top 46%, hsl(230, 89%, 65%) 67%, hsl(230, 89%, 58%) 35%) border-box;
+  position: absolute;
+  top: 20%;
+  right: -15%;
+}
+
+.scissors {
+  background: url(/public/images/icon-scissors.svg) center/40% no-repeat, radial-gradient(circle at left 50% bottom 47%, #fff 66%, #d6d6d6 35%) content-box, radial-gradient(circle at left 50% top 46%, hsl(40, 84%, 53%) 67%, hsl(39, 89%, 45%) 35%) border-box;
+  position: absolute;
+  top: -15%;
+  left: 30%;
+}
+
+.lizard {
+  background: url(/public/images/icon-lizard.svg) center/40% no-repeat, radial-gradient(circle at left 50% bottom 47%, #fff 66%, #d6d6d6 35%) content-box, radial-gradient(circle at left 50% top 46%, hsl(261, 72%, 63%) 67%, hsl(261, 73%, 56%) 35%) border-box;
+  position: absolute;
+  bottom: -15%;
+  left: 0;
+}
+
+.spock {
+  background: url(/public/images/icon-spock.svg) center/40% no-repeat, radial-gradient(circle at left 50% bottom 47%, #fff 66%, #d6d6d6 35%) content-box, radial-gradient(circle at left 50% top 46%, hsl(189, 58%, 57%) 67%, hsl(189, 59%, 49%) 35%) border-box;
+  position: absolute;
+  left: -15%;
+  top: 20%;
 }
