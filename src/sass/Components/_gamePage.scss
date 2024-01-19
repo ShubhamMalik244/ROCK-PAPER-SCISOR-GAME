@@ -1,11 +1,13 @@
 @use "../Tools/all" as *;
 
 .gamePage {
+  width: 100%;
+  max-width: 1366px;
   height: 100dvh;
-  background-image: radial-gradient(circle at top, $RadialFrom 40%, $RadialTo);
-  @include flexing(column, flex-start, center);
-  gap: 8rem;
-  padding: 4rem 1rem;
+  @include flexing(column, space-between, center);
+  gap: 2rem;
+  padding: 1rem;
+  position: relative;
 
   .leadBoard {
     width: clamp(20rem, calc(100vw - 2rem), 50rem);
@@ -47,11 +49,127 @@
     background: url(/public/images/bg-pentagon.svg) center/contain no-repeat;
     position: relative;
 
-    .playBtn {
-      border: clamp(.8rem, 2vw, 1rem) solid transparent;
-      border-radius: 50%;
-      width: 40%;
-      aspect-ratio: 1/1;
+    .rock-P {
+      position: absolute;
+      bottom: -15%;
+      right: 0%;
     }
+    .paper-P {
+      position: absolute;
+      top: 20%;
+      right: -15%;
+    }
+    .scissors-P {
+      position: absolute;
+      top: -15%;
+      left: 30%;
+    }
+    .lizard-P {
+      position: absolute;
+      bottom: -15%;
+      left: 0;
+    }
+    .spock-P {
+      position: absolute;
+      left: -15%;
+      top: 20%;
+    }
+  }
+
+  .resultContainer {
+    width: clamp(20rem, calc(100vw - 2rem), 70rem);
+    @include flexing(row, center, center);
+    gap: clamp(2rem, 8vw, 6rem);
+    
+
+    .user,
+    .comp {
+      position: relative;
+
+      &::after {
+        min-width: max-content;
+        @include fonting(clamp(1rem, 3vw, 1.8rem), "Barlow-Bold");
+        color: #fff;
+        letter-spacing: 1.2px;
+        position: absolute;
+        top: -4rem;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+    }
+
+    .user {
+      &::after {
+        content: "YOU PICKED";
+      }
+    }
+
+    .comp {
+      &::after {
+        content: "THE HOUSE PICKED";
+      }
+    }
+
+    .reset {
+      min-width: max-content;
+      @include flexing(column, space-between, center);
+      gap: 1rem;
+
+      h1 {
+        @include fonting(clamp(3rem, 6vw, 4rem), "Barlow-ExBold");
+        color: #fff;
+        letter-spacing: 3px;
+      }
+
+      button {
+        @include fonting(clamp(1.1rem, 2.5vw, 1.3rem), "Barlow-Bold");
+        color: $ScoreText;
+        padding: clamp(0.8rem, 2vw, 1rem) 0;
+        align-self: stretch;
+        border: none;
+        border-radius: 8px;
+        letter-spacing: 2px;
+      }
+    }
+  }
+
+  .ruleBtnContainer {
+    align-self: stretch;
+    @include flexing(row, flex-end, center);
+
+    .ruleBtn {
+      border: 2px solid $HeaderOutline;
+      border-radius: 7px;
+      padding: 0.5rem 2.5rem;
+      background: transparent;
+      @include fonting(clamp(1rem, 2vw, 1.3rem), "Barlow-Bold");
+      color: #fff;
+      letter-spacing: 2.2px;
+    }
+  }
+}
+
+//MEDIA QUERRY
+@media (width <= 539px) {
+  .ruleBtnContainer {
+    justify-content: center !important;
+  }
+}
+
+@media (width <= 720px) {
+  .resultContainer {
+    flex-wrap: wrap;
+  }
+  .user {
+    order: 1;
+  }
+  .comp {
+    order: 2;
+  }
+  .emptyBtn{
+    order: 2;
+  }
+  .reset {
+    order: 3;
   }
 }

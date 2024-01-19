@@ -1,3 +1,5 @@
+@use '../Tools/all' as *;
+
 *{
     padding: 0;
     margin: 0;
@@ -6,4 +8,7 @@
 
 .appContainer{
     min-width: 375px;
+    min-height: 100dvh;
+    background-image: radial-gradient(circle at top, $RadialFrom 40%, $RadialTo);
+    @include center;
 }

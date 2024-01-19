@@ -26,3 +26,10 @@
 @mixin fonting($size, $family) {
     font: $size $family;
 }
+
+//SET BACKGROUND
+@mixin setBackground($src, $gradinetStart, $gradientEnd){
+    background: url($src) center/35% no-repeat,
+    radial-gradient(circle at left 50% bottom 44%, #fff 68%, #d6d6d6 35%) content-box,
+    radial-gradient(circle at left 50% top 44%, $gradinetStart 69%, $gradientEnd 35%) padding-box;
+}

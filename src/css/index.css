@@ -1,13 +1,3 @@
-* {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-}
-
-.appContainer {
-  min-width: 375px;
-}
-
 @font-face {
   font-family: "Barlow-Bold";
   src: url("/public/fonts/BarlowSemiCondensed-Bold.ttf");
@@ -16,6 +6,20 @@
   font-family: "Barlow-ExBold";
   src: url("/public/fonts/BarlowSemiCondensed-ExtraBold.ttf");
 }
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.appContainer {
+  min-width: 375px;
+  min-height: 100dvh;
+  background-image: radial-gradient(circle at top, hsl(214, 70%, 30%) 40%, hsl(237, 49%, 15%));
+  display: grid;
+  place-items: center;
+}
+
 .overlayPage {
   position: absolute;
   inset: 0 0;
@@ -73,14 +77,16 @@
   }
 }
 .gamePage {
+  width: 100%;
+  max-width: 1366px;
   height: 100dvh;
-  background-image: radial-gradient(circle at top, hsl(214, 70%, 30%) 40%, hsl(237, 49%, 15%));
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: space-between;
   align-items: center;
-  gap: 8rem;
-  padding: 4rem 1rem;
+  gap: 2rem;
+  padding: 1rem;
+  position: relative;
 }
 .gamePage .leadBoard {
   width: clamp(20rem, 100vw - 2rem, 50rem);
@@ -123,48 +129,165 @@
   background: url(/public/images/bg-pentagon.svg) center/contain no-repeat;
   position: relative;
 }
-.gamePage .gameBtnContainer .playBtn {
-  border: clamp(0.8rem, 2vw, 1rem) solid transparent;
+.gamePage .gameBtnContainer .rock-P {
+  position: absolute;
+  bottom: -15%;
+  right: 0%;
+}
+.gamePage .gameBtnContainer .paper-P {
+  position: absolute;
+  top: 20%;
+  right: -15%;
+}
+.gamePage .gameBtnContainer .scissors-P {
+  position: absolute;
+  top: -15%;
+  left: 30%;
+}
+.gamePage .gameBtnContainer .lizard-P {
+  position: absolute;
+  bottom: -15%;
+  left: 0;
+}
+.gamePage .gameBtnContainer .spock-P {
+  position: absolute;
+  left: -15%;
+  top: 20%;
+}
+.gamePage .resultContainer {
+  width: clamp(20rem, 100vw - 2rem, 70rem);
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: clamp(2rem, 8vw, 6rem);
+}
+.gamePage .resultContainer .user,
+.gamePage .resultContainer .comp {
+  position: relative;
+}
+.gamePage .resultContainer .user::after,
+.gamePage .resultContainer .comp::after {
+  min-width: max-content;
+  font: clamp(1rem, 3vw, 1.8rem) "Barlow-Bold";
+  color: #fff;
+  letter-spacing: 1.2px;
+  position: absolute;
+  top: -4rem;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.gamePage .resultContainer .user::after {
+  content: "YOU PICKED";
+}
+.gamePage .resultContainer .comp::after {
+  content: "THE HOUSE PICKED";
+}
+.gamePage .resultContainer .reset {
+  min-width: max-content;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+.gamePage .resultContainer .reset h1 {
+  font: clamp(3rem, 6vw, 4rem) "Barlow-ExBold";
+  color: #fff;
+  letter-spacing: 3px;
+}
+.gamePage .resultContainer .reset button {
+  font: clamp(1.1rem, 2.5vw, 1.3rem) "Barlow-Bold";
+  color: hsl(229, 64%, 46%);
+  padding: clamp(0.8rem, 2vw, 1rem) 0;
+  align-self: stretch;
+  border: none;
+  border-radius: 8px;
+  letter-spacing: 2px;
+}
+.gamePage .ruleBtnContainer {
+  align-self: stretch;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+}
+.gamePage .ruleBtnContainer .ruleBtn {
+  border: 2px solid hsl(217, 30%, 50%);
+  border-radius: 7px;
+  padding: 0.5rem 2.5rem;
+  background: transparent;
+  font: clamp(1rem, 2vw, 1.3rem) "Barlow-Bold";
+  color: #fff;
+  letter-spacing: 2.2px;
+}
+
+@media (width <= 539px) {
+  .ruleBtnContainer {
+    justify-content: center !important;
+  }
+}
+@media (width <= 720px) {
+  .resultContainer {
+    flex-wrap: wrap;
+  }
+  .user {
+    order: 1;
+  }
+  .comp {
+    order: 2;
+  }
+  .emptyBtn {
+    order: 2;
+  }
+  .reset {
+    order: 3;
+  }
+}
+.hide {
+  display: none !important;
+}
+
+.scale {
+  transform: scale(2);
+}
+
+.smallBtn {
+  padding: clamp(5px, 4%, 2.3rem);
   border-radius: 50%;
   width: 40%;
   aspect-ratio: 1/1;
 }
 
-.hide {
-  display: none;
+.bigBtn {
+  padding: clamp(1rem, 3%, 1.8rem);
+  border-radius: 50%;
+  width: clamp((343px - 2rem) / 2, 37%, 18rem);
+  aspect-ratio: 1/1;
+}
+
+.emptyBtn {
+  background-color: rgba(0, 0, 0, 0.2);
+  transform: scale(0.8);
+  max-width: 20rem;
 }
 
 .rock {
-  background: url(/public/images/icon-rock.svg) center/40% no-repeat, radial-gradient(circle at left 50% bottom 47%, #fff 66%, #d6d6d6 35%) content-box, radial-gradient(circle at left 50% top 46%, hsl(349, 70%, 56%) 67%, hsl(349, 71%, 48%) 35%) border-box;
-  position: absolute;
-  bottom: -15%;
-  right: 0%;
+  background: url("/public/images/icon-rock.svg") center/35% no-repeat, radial-gradient(circle at left 50% bottom 44%, #fff 68%, #d6d6d6 35%) content-box, radial-gradient(circle at left 50% top 44%, hsl(349, 70%, 56%) 69%, hsl(349, 71%, 48%) 35%) padding-box;
 }
 
 .paper {
-  background: url(/public/images/icon-paper.svg) center/40% no-repeat, radial-gradient(circle at left 50% bottom 47%, #fff 66%, #d6d6d6 35%) content-box, radial-gradient(circle at left 50% top 46%, hsl(230, 89%, 65%) 67%, hsl(230, 89%, 58%) 35%) border-box;
-  position: absolute;
-  top: 20%;
-  right: -15%;
+  background: url("/public/images/icon-paper.svg") center/35% no-repeat, radial-gradient(circle at left 50% bottom 44%, #fff 68%, #d6d6d6 35%) content-box, radial-gradient(circle at left 50% top 44%, hsl(230, 89%, 65%) 69%, hsl(230, 89%, 58%) 35%) padding-box;
 }
 
 .scissors {
-  background: url(/public/images/icon-scissors.svg) center/40% no-repeat, radial-gradient(circle at left 50% bottom 47%, #fff 66%, #d6d6d6 35%) content-box, radial-gradient(circle at left 50% top 46%, hsl(40, 84%, 53%) 67%, hsl(39, 89%, 45%) 35%) border-box;
-  position: absolute;
-  top: -15%;
-  left: 30%;
+  background: url("/public/images/icon-scissors.svg") center/35% no-repeat, radial-gradient(circle at left 50% bottom 44%, #fff 68%, #d6d6d6 35%) content-box, radial-gradient(circle at left 50% top 44%, hsl(40, 84%, 53%) 69%, hsl(39, 89%, 45%) 35%) padding-box;
 }
 
 .lizard {
-  background: url(/public/images/icon-lizard.svg) center/40% no-repeat, radial-gradient(circle at left 50% bottom 47%, #fff 66%, #d6d6d6 35%) content-box, radial-gradient(circle at left 50% top 46%, hsl(261, 72%, 63%) 67%, hsl(261, 73%, 56%) 35%) border-box;
-  position: absolute;
-  bottom: -15%;
-  left: 0;
+  background: url("/public/images/icon-lizard.svg") center/35% no-repeat, radial-gradient(circle at left 50% bottom 44%, #fff 68%, #d6d6d6 35%) content-box, radial-gradient(circle at left 50% top 44%, hsl(261, 72%, 63%) 69%, hsl(261, 73%, 56%) 35%) padding-box;
 }
 
 .spock {
-  background: url(/public/images/icon-spock.svg) center/40% no-repeat, radial-gradient(circle at left 50% bottom 47%, #fff 66%, #d6d6d6 35%) content-box, radial-gradient(circle at left 50% top 46%, hsl(189, 58%, 57%) 67%, hsl(189, 59%, 49%) 35%) border-box;
-  position: absolute;
-  left: -15%;
-  top: 20%;
+  background: url("/public/images/icon-spock.svg") center/35% no-repeat, radial-gradient(circle at left 50% bottom 44%, #fff 68%, #d6d6d6 35%) content-box, radial-gradient(circle at left 50% top 44%, hsl(189, 58%, 57%) 69%, hsl(189, 59%, 49%) 35%) padding-box;
 }

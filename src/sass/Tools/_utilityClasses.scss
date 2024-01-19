@@ -1,51 +1,58 @@
-@use '../Tools/all' as *;
+@use "../Tools/all" as *;
 
 .hide {
-  display: none;
+  display: none !important;
+}
+
+.scale {
+  transform: scale(2);
 }
 
 //SPECIFIC BTN CLASSES
+.smallBtn{
+  padding: clamp(5px, 4%, 2.3rem);
+  border-radius: 50%;
+  width: 40%;
+  aspect-ratio: 1/1;
+}
+
+.bigBtn{
+  padding: clamp(1rem, 3%, 1.8rem);
+  border-radius: 50%;
+  width: clamp(calc((343px - 2rem) / 2), 37%, 18rem);
+  aspect-ratio: 1/1;
+}
+
+.emptyBtn {
+  background-color: rgba($color: #000000, $alpha: 0.2);
+  transform: scale(.8);
+  max-width: 20rem;
+}
+
 .rock {
-    background: url(/public/images/icon-rock.svg) center/40% no-repeat,
-    radial-gradient(circle at left 50% bottom 47%, #fff 66%, #d6d6d6 35%) content-box,
-    radial-gradient(circle at left 50% top 46%, $RockFrom 67%, $RockTo 35%) border-box;
-    position: absolute;
-    bottom: -15%;
-    right: 0%;
+  @include setBackground("/public/images/icon-rock.svg", $RockFrom, $RockTo);
 }
 
 .paper {
-    background: url(/public/images/icon-paper.svg) center/40% no-repeat,
-    radial-gradient(circle at left 50% bottom 47%, #fff 66%, #d6d6d6 35%) content-box,
-    radial-gradient(circle at left 50% top 46%, $PaperFrom 67%, $PaperTo 35%) border-box;
-    position: absolute;
-    top: 20%;
-    right: -15%;
+  @include setBackground("/public/images/icon-paper.svg", $PaperFrom, $PaperTo);
 }
 
 .scissors {
-    background: url(/public/images/icon-scissors.svg) center/40% no-repeat,
-    radial-gradient(circle at left 50% bottom 47%, #fff 66%, #d6d6d6 35%) content-box,
-    radial-gradient(circle at left 50% top 46%, $ScissorsFrom 67%, $ScissorsTo 35%) border-box;
-    position: absolute;
-    top: -15%;
-    left: 30%;
+  @include setBackground(
+    "/public/images/icon-scissors.svg",
+    $ScissorsFrom,
+    $ScissorsTo
+  );
 }
 
 .lizard {
-  background: url(/public/images/icon-lizard.svg) center/40% no-repeat,
-    radial-gradient(circle at left 50% bottom 47%, #fff 66%, #d6d6d6 35%) content-box,
-    radial-gradient(circle at left 50% top 46%, $LizardFrom 67%, $LizardTo 35%) border-box;
-    position: absolute;
-    bottom: -15%;
-    left: 0;
+  @include setBackground(
+    "/public/images/icon-lizard.svg",
+    $LizardFrom,
+    $LizardTo
+  );
 }
 
 .spock {
-    background: url(/public/images/icon-spock.svg) center/40% no-repeat,
-    radial-gradient(circle at left 50% bottom 47%, #fff 66%, #d6d6d6 35%) content-box,
-    radial-gradient(circle at left 50% top 46%, $SpockFrom 67%, $SpockTo 35%) border-box;
-    position: absolute;
-    left: -15%;
-    top: 20%;
+  @include setBackground("/public/images/icon-spock.svg", $SpockFrom, $SpockTo);
 }
