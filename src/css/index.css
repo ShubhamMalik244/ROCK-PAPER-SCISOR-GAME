@@ -128,7 +128,7 @@
   transform: scaleY(1.2);
 }
 .gamePage .gameBtnContainer {
-  width: clamp(15rem, 45vw, 25rem);
+  width: clamp(15rem, 45vw, 22rem);
   aspect-ratio: 1/1;
   background: url(/public/images/bg-pentagon.svg) center/contain no-repeat;
   position: relative;
