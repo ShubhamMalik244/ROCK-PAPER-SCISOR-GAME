@@ -1,3 +1,3 @@
-export default function PlayBtn({btnType}) {
-  return <div className={btnType}></div>;
+export default function PlayBtn({playBtnClick, btnType}) {
+  return <div onClick={playBtnClick} className={btnType}></div>;
 }

@@ -9,14 +9,18 @@
 }
 
 //SPECIFIC BTN CLASSES
-.smallBtn{
+.smallBtn {
   padding: clamp(5px, 4%, 2.3rem);
   border-radius: 50%;
   width: 40%;
   aspect-ratio: 1/1;
+
+  &:hover {
+    cursor: pointer;
+  }
 }
 
-.bigBtn{
+.bigBtn {
   padding: clamp(1rem, 3%, 1.8rem);
   border-radius: 50%;
   width: clamp(calc((343px - 2rem) / 2), 37%, 18rem);
@@ -25,7 +29,7 @@
 
 .emptyBtn {
   background-color: rgba($color: #000000, $alpha: 0.2);
-  transform: scale(.8);
+  transform: scale(0.8);
   max-width: 20rem;
 }
 
@@ -55,4 +59,55 @@
 
 .spock {
   @include setBackground("/public/images/icon-spock.svg", $SpockFrom, $SpockTo);
+}
+
+//WIN ANIMATION FOR THE BTN
+
+.winner {
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0 0;
+    border-radius: 50%;
+    transform: scale(2.5);
+    background: radial-gradient(
+      circle at center,
+      hsla(217, 30%, 50%, 0.4) 41%,
+      hsla(217, 30%, 50%, 0.25) 41% 55%,
+      hsla(217, 30%, 50%, 0.1) 55% 100%
+    );
+    z-index: -1;
+    animation: win .2s ease-out 1 forwards;
+    
+  }
+}
+
+@keyframes win {
+  0% {
+    background: none;
+  }
+  33% {
+    background: radial-gradient(
+      circle at center,
+      hsla(217, 30%, 50%, 0.3) 41%,
+      transparent 41% 55%,
+      transparent 55% 100%
+    );
+  }
+  66% {
+    background: radial-gradient(
+      circle at center,
+      hsla(217, 30%, 50%, 0.3) 41%,
+      hsla(217, 30%, 50%, 0.15) 41% 55%,
+        transparent 55% 100%
+    );
+  }
+  100% {
+    background: radial-gradient(
+      circle at center,
+      hsla(217, 30%, 50%, 0.3) 41%,
+      hsla(217, 30%, 50%, 0.15) 41% 55%,
+      hsla(217, 30%, 50%, 0.08) 55% 100%
+    );
+  }
 }

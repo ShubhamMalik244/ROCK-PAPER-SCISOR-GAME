@@ -8,6 +8,7 @@
   gap: 2rem;
   padding: 1rem;
   position: relative;
+  overflow: hidden;
 
   .leadBoard {
     width: clamp(20rem, calc(100vw - 2rem), 50rem);
@@ -80,7 +81,7 @@
     width: clamp(20rem, calc(100vw - 2rem), 70rem);
     @include flexing(row, center, center);
     gap: clamp(2rem, 8vw, 6rem);
-    
+    z-index: 0;
 
     .user,
     .comp {
@@ -129,6 +130,7 @@
         border: none;
         border-radius: 8px;
         letter-spacing: 2px;
+        cursor: pointer;
       }
     }
   }
@@ -139,12 +141,18 @@
 
     .ruleBtn {
       border: 2px solid $HeaderOutline;
-      border-radius: 7px;
+      border-radius: 10px;
       padding: 0.5rem 2.5rem;
       background: transparent;
       @include fonting(clamp(1rem, 2vw, 1.3rem), "Barlow-Bold");
       color: #fff;
       letter-spacing: 2.2px;
+      transition: transform 0.3s;
+      z-index: 1;
+
+      &:hover {
+        cursor: pointer;
+      }
     }
   }
 }
@@ -166,7 +174,7 @@
   .comp {
     order: 2;
   }
-  .emptyBtn{
+  .emptyBtn {
     order: 2;
   }
   .reset {

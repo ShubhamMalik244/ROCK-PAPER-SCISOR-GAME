@@ -51,6 +51,9 @@
   width: 1.2rem;
   height: 1.2rem;
 }
+.overlayPage .box nav button:hover {
+  cursor: pointer;
+}
 
 @media (width <= 425px) {
   .overlayPage {
@@ -87,6 +90,7 @@
   gap: 2rem;
   padding: 1rem;
   position: relative;
+  overflow: hidden;
 }
 .gamePage .leadBoard {
   width: clamp(20rem, 100vw - 2rem, 50rem);
@@ -161,6 +165,7 @@
   justify-content: center;
   align-items: center;
   gap: clamp(2rem, 8vw, 6rem);
+  z-index: 0;
 }
 .gamePage .resultContainer .user,
 .gamePage .resultContainer .comp {
@@ -204,6 +209,7 @@
   border: none;
   border-radius: 8px;
   letter-spacing: 2px;
+  cursor: pointer;
 }
 .gamePage .ruleBtnContainer {
   align-self: stretch;
@@ -214,12 +220,17 @@
 }
 .gamePage .ruleBtnContainer .ruleBtn {
   border: 2px solid hsl(217, 30%, 50%);
-  border-radius: 7px;
+  border-radius: 10px;
   padding: 0.5rem 2.5rem;
   background: transparent;
   font: clamp(1rem, 2vw, 1.3rem) "Barlow-Bold";
   color: #fff;
   letter-spacing: 2.2px;
+  transition: transform 0.3s;
+  z-index: 1;
+}
+.gamePage .ruleBtnContainer .ruleBtn:hover {
+  cursor: pointer;
 }
 
 @media (width <= 539px) {
@@ -258,6 +269,9 @@
   width: 40%;
   aspect-ratio: 1/1;
 }
+.smallBtn:hover {
+  cursor: pointer;
+}
 
 .bigBtn {
   padding: clamp(1rem, 3%, 1.8rem);
@@ -290,4 +304,30 @@
 
 .spock {
   background: url("/public/images/icon-spock.svg") center/35% no-repeat, radial-gradient(circle at left 50% bottom 44%, #fff 68%, #d6d6d6 35%) content-box, radial-gradient(circle at left 50% top 44%, hsl(189, 58%, 57%) 69%, hsl(189, 59%, 49%) 35%) padding-box;
+}
+
+.winner::before {
+  content: "";
+  position: absolute;
+  inset: 0 0;
+  border-radius: 50%;
+  transform: scale(2.5);
+  background: radial-gradient(circle at center, hsla(217, 30%, 50%, 0.4) 41%, hsla(217, 30%, 50%, 0.25) 41% 55%, hsla(217, 30%, 50%, 0.1) 55% 100%);
+  z-index: -1;
+  animation: win 0.2s ease-out 1 forwards;
+}
+
+@keyframes win {
+  0% {
+    background: none;
+  }
+  33% {
+    background: radial-gradient(circle at center, hsla(217, 30%, 50%, 0.3) 41%, transparent 41% 55%, transparent 55% 100%);
+  }
+  66% {
+    background: radial-gradient(circle at center, hsla(217, 30%, 50%, 0.3) 41%, hsla(217, 30%, 50%, 0.15) 41% 55%, transparent 55% 100%);
+  }
+  100% {
+    background: radial-gradient(circle at center, hsla(217, 30%, 50%, 0.3) 41%, hsla(217, 30%, 50%, 0.15) 41% 55%, hsla(217, 30%, 50%, 0.08) 55% 100%);
+  }
 }

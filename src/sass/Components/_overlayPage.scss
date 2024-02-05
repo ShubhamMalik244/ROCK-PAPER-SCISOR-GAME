@@ -27,6 +27,10 @@
         background: url("/public/images/icon-close.svg") center/cover no-repeat;
         width: 1.2rem;
         height: 1.2rem;
+
+        &:hover{
+          cursor: pointer;
+        }
       }
     }
   }
