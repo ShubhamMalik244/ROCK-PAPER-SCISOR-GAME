@@ -3,9 +3,9 @@
 .gamePage {
   width: 100%;
   max-width: 1477px;
-  height: 100dvh;
+  min-height: 100lvh;
   @include flexing(column, space-between, center);
-  gap: 2rem;
+  gap: 5rem;
   padding: 1rem;
   position: relative;
   overflow: hidden;

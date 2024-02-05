@@ -82,12 +82,12 @@
 .gamePage {
   width: 100%;
   max-width: 1477px;
-  height: 100dvh;
+  min-height: 100lvh;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  gap: 2rem;
+  gap: 5rem;
   padding: 1rem;
   position: relative;
   overflow: hidden;
